@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1 class="text-center">Portfolio</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{ asset('img/badges_Android_BuildASimple_Stage3.png') }}"/>
+                    <div class="caption">
+                        <h3>Android App</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                    <a href="{{ path('galleries') }}">
+                        <img class="img-responsive" src="{{ asset('img/bootstrap3.png') }}"/>
+                    </a>
+                    <div class="caption">
+                        <h3>Bootstrap</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{ asset('img/badges_Android_DesignsforRibbit_Stage4.png') }}"/>
+                    <div class="caption">
+                        <h3>Customizing App</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{ asset('img/badges_Android_Tools_Stage1.png') }}"/>
+                    <div class="caption">
+                        <h3>Customizing App</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

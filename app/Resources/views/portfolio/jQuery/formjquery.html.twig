@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block addstyles %}
+    <link href="{{ asset('css/formjquery.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Form Validation in jQuery</h1>
+
+    <div class="formjquery">
+        <form action="#" method="post">
+            <p>
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text">
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password">
+                <span>Enter a password longer than 8 characters</span>
+            </p>
+            <p>
+                <label for="confirm_password">Confirm Password</label>
+                <input id="confirm_password" name="confirm_password" type="password">
+                <span>Please confirm your password</span>
+            </p>
+            <p>
+                <input id="submit" type="submit" value="SUBMIT" disabled>
+            </p>
+        </form>
+    </div>
+
+{% endblock content %}
+{% block addscripts %}
+    <script src="{{ asset('js/formjquery.js') }}">
+    </script>
+{% endblock %}

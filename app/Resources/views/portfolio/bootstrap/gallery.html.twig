@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+        <li><a href="{{ path('portfolio') }}">Portfolio</a></li>
+        <li><a href="{{ path('galleries') }}">Gallleries</a></li>
+        <li class="active">Gallery</li>
+    </ol>
+
+    <h1 class="text-center">Gallery</h1>
+
+    <h1>
+        {% if img is defined %}
+            {{ img }}
+        {% endif %}
+    </h1>
+
+    <div class="row">
+        {#<div class="col-md-3 col-xs-6">
+            <a href="#" class="thumbnail" data-toggle="modal" data-target="#firstImage">
+                <img class="img-responsive " src="{{ asset('img/gallery/01.jpg') }}"/>
+            </a>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <a href="#" class="thumbnail" data-toggle="modal" data-target="#firstImage">
+                <img class="img-responsive " src="{{ asset('img/gallery/02.jpg') }}"/>
+            </a>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <a href="#" class="thumbnail" data-toggle="modal" data-target="#firstImage">
+                <img class="img-responsive " src="{{ asset('img/gallery/03.jpg') }}"/>
+            </a>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <a href="#" class="thumbnail" data-toggle="modal" data-target="#firstImage">
+                <img class="img-responsive " src="{{ asset('img/gallery/04.jpg') }}"/>
+            </a>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <a href="#" class="thumbnail" data-toggle="modal" data-target="#firstImage">
+                <img class="img-responsive " src="{{ asset('img/gallery/07.jpg') }}"/>
+            </a>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <a href="#" class="thumbnail" data-toggle="modal" data-target="#firstImage">
+                <img class="img-responsive " src="{{ asset('img/gallery/08.jpg') }}"/>
+            </a>
+        </div>#}
+
+        {% for image in images %}
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <a href="#" class="thumbnail imageGalleryDiv" data-toggle="modal" data-target="#firstImage">
+                    <img class="img-responsive imageGallery"
+                         src="{{ asset(image.webPath) }}"/>
+                    <span class="hidden imageUrl">{{ path('deleteImage', {'id': image.id}) }}</span>
+                </a>
+
+            </div>
+        {% endfor %}
+
+        {% if app.user and not app.user %}
+            {% for file in files %}
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="#" class="thumbnail imageGalleryDiv" data-toggle="modal" data-target="#firstImage">
+                        <img class="img-responsive imageGallery"
+                             src="{{ vich_uploader_asset(file, 'imageFile') }}"/>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <a href="{{ path('addImage') }}">
+        <svg id="btnAdd" class="pull-right shadow" fill="#02a8f3" height="100" viewBox="0 0 24 24" width="100"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+        </svg>
+    </a>
+
+    <div class="modal fade" id="firstImage" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="img-responsive" src="{{ asset('img/gallery/01.jpg') }}"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left btnDismiss" data-dismiss="modal">Close
+                    </button>
+                    <div class="myBtn">
+                        <a class="btn btn-danger" href="{{ path('deleteImage', {'id': 0}) }}">Supprimer</a>
+                        <button type="button" class="btn btn-info">Modifier</button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+{% endblock content %}
+
+{% block addscripts %}
+    <script>
+        $(document).ready(function () {
+            $('.imageGalleryDiv').click(function () {
+                var src = $(this).children('img').attr('src');
+                //console.log(src);
+                var url = $(this).children('span').text();
+                //console.log(url);
+
+                var deleteBtn = '<a class="btn btn-danger" href="'
+                                + url
+                                + '">Supprimer</a>';
+                //var src = img.attr('src');
+                var img = '<img class="img-responsive" src="' + src + '" />';
+
+                $('div.modal-body').html(img);
+                $('div.myBtn').html(deleteBtn);
+            });
+        });
+    </script>
+{% endblock %}

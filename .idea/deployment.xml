@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="myproject">
+    <serverData>
+      <paths name="myproject">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="Symphony/AppDevloop" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block addstyles %}
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick-theme.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Slick Application</h1>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="slides text-center">
+                <div>
+                    <img class="img-responsive" src="{{ asset('img/gallery/01.jpg') }}" alt="">
+                </div>
+                <div>
+                    <img src="{{ asset('img/gallery/02.jpg') }}" alt="">
+                </div>
+                <div>
+                    <img src="{{ asset('img/gallery/03.jpg') }}" alt="">
+                </div>
+                <div>
+                    <img src="{{ asset('img/gallery/04.jpg') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block addscripts %}
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <script>
+        $('.slides').slick({
+            fade: true,
+            autoplay: true,
+            dots: true,
+            adaptiveHeight: true
+        });
+    </script>
+{% endblock %}

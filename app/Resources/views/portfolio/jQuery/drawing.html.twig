@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block addstyles %}
+    <link href="{{ asset('css/drawing-app.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Drawing Application</h1>
+
+    <div class="drawingApp">
+        <canvas width="600" height="400"></canvas>
+        <div id="buttons" width="600">
+            <ul>
+                <li id="clear">CLEAR</li>
+                <li id="fill">FILL</li>
+                <li id="pencil">PENCIL</li>
+                <li id="rubber">RUBBER</li>
+            </ul>
+        </div>
+        <div class="controls">
+            <ul>
+                <li class="red selected"></li>
+                <li class="blue"></li>
+                <li class="yellow"></li>
+            </ul>
+            <button id="revealColorSelect">New Color</button>
+            <div id="colorSelect">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <span id="newColor"></span>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="sliders">
+                            <p>
+                                <label for="red">Red</label>
+                                <input id="red" name="red" type="range" min=0 max=255 value=0>
+                            </p>
+                            <p>
+                                <label for="green">Green</label>
+                                <input id="green" name="green" type="range" min=0 max=255 value=0>
+                            </p>
+                            <p>
+                                <label for="blue">Blue</label>
+                                <input id="blue" name="blue" type="range" min=0 max=255 value=0>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button class="btn btn-success btn-block" id="addNewColor">Add Color</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block addscripts %}
+    <script src="{{ asset('js/drawing-app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/bootstrap-slider.min.js"></script>
+{% endblock %}
